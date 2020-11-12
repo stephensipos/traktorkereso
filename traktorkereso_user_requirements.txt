@@ -1,0 +1,13 @@
+Traktor kereső honlap elvárások:
+– Traktorok listából választhatóak
+– Két traktor összehasonlítható legyen a különbségek jelenjenek meg.
+– Traktorok adatai:
+	-> Gyártási év
+ 	-> Teljesítmény
+	-> Nyomaték
+	-> Ár
+– Legyen kommentelhető és értékelhető minden traktor.
+	-> 1-5 csillag.
+	-> Komment 50 karakterig.
+– Ezek jelenjenek meg ha kiválasztjuk a traktort a listából és értékeléseket megnyomjuk.
+– A kommenteket mentsük vissza az adatbázisba.
