@@ -9,5 +9,5 @@ Traktor kereső honlap elvárások:
 – Legyen kommentelhető és értékelhető minden traktor.
 	-> 1-5 csillag.
 	-> Komment 50 karakterig.
-– Ezek jelenjenek meg ha kiválasztjuk a traktort a listából és értékeléseket megnyomjuk.
+– Ezek jelenjenek meg ha kiválasztjuk a traktort a listából és értékelések gombot megnyomjuk.
 – A kommenteket mentsük vissza az adatbázisba.
