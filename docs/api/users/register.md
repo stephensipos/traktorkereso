@@ -1,46 +1,37 @@
-# {{Request.Name}}
+# Users: register
 
-{{Request.Description}}
+Registers a user
 
-### Prerequisites
+## HTTP Request
 
-One of the following scopes are required to execute this request:
-
-{{#foreach Request.Scopes}}
-* {{Name}}
-{{/foreach}}
-
-### HTTP Request
-
+```text
+POST /api/register
 ```
-{{Request.ExampleRequestUrl}}
-```
-### Request parameters
+
+## Request parameters
 
 In the request URL, provide the following query parameters with values.
 
-| Parameter | Type | Description |
-|:----------|:-----|:------------|
+| Parameter   | Type   | Description      |
+|:------------|:-------|:-----------------|
+| email       | string | e-mail address   |
+| password    | string | password         |
+| displayname | string | name of the user |
 
-### Optional request headers
-
-| Name | Value |
-|:-----|:------|
-
-### Request body
+## Request body
 
 Do not supply a request body with this method.
 
-### Example
+## Response
 
-##### Request
+If successful, this method returns a response body with the following structure:
 
-```http
+```json
+{
+  "user_id": integer,
+}
 ```
 
-##### Response
-
-```http
-```
-
-### Remarks
+| Property name | Value   | Description               |
+|:--------------|:--------|:--------------------------|
+| user_id       | integer | ID of the registered user |
