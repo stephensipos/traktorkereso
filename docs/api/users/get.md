@@ -44,6 +44,11 @@ Otherwise the following structure is returned:
 }
 ```
 
-| Property name | Value   | Description                             |
-|:--------------|:--------|:----------------------------------------|
-| errorCode     | integer | 1 - The provided user_id does not exist |
+| Property name | Value   | Description                         |
+|:--------------|:--------|:------------------------------------|
+| errorCode     | integer | See the table below for the details |
+
+| Error code | Description                         |
+|:-----------|:------------------------------------|
+| 1          | The provided user_id does not exist |
+

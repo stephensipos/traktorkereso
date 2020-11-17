@@ -12,6 +12,13 @@ POST /api/login
 
 In the request body, provide the following parameters:
 
+```text
+{
+  "email": string,
+  "password": string
+}
+```
+
 | Parameter | Type   | Description    |
 |:----------|:-------|:---------------|
 | email     | string | e-mail address |
@@ -27,7 +34,7 @@ If successful, this method returns a response body with the following structure:
 }
 ```
 
-Otherwise the followin structure is returned:
+Otherwise the following structure is returned:
 
 ```text
 {
