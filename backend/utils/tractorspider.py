@@ -154,8 +154,8 @@ makes = [
     "NEW HOLLAND", "NEW IDEA", "NOBILI", "ORSI", "PÖTTINGER", "RÁBA", "RABE", "RABEWERK",
     "RANSOMES", "REGENT", "RENAULT", "RTS", "SAME", "SAXONIA", "SIPMA", "SOKORÓ", "SOLIS",
     "STEYR", "TORNADO", "UNIMOG", "VÄDERSTADT", "VALTRA", "VICON", "VLADIMIREC",
-    "VOGEL & NOOT", "WARCHALOWSKI", "WEIDEMANN", "WIRAX", "WOLF", "WOPROL", "YANMAR", "YTO",
-    "ZETOR",
+    "VOGEL & NOOT", "VTZ", "WARCHALOWSKI", "WEIDEMANN", "WIRAX", "WOLF", "WOPROL", "YANMAR",
+    "YTO", "ZETOR",
 ]
 
 
@@ -163,11 +163,11 @@ field_codes = {
     "Vételár:": "price",
     "Évjárat:": "year",
     "Állapot:": "condition",
-    "Üzemanyag": "fuel_type",
+    "Üzemanyag:": "fuel_type",
     "Üzemóra:": "hours",
     "Maximális teljesítmény:": "engine_power",
     "Okmányok jellege:": "documents_type",
-    "Műszaki vizsga érvényes:": "documents_validity",
+    "Műszaki vizsga érvényes:": "documents_valid",
 }
 
 if __name__ == "__main__":
