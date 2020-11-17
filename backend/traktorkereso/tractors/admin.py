@@ -1,20 +1,10 @@
 from django.contrib import admin
 
-from .models import Make
 from .models import Condition
 from .models import Tractor
 from .models import Equipment
 
 # Register your models here.
-
-class MakeAdmin(admin.ModelAdmin):
-    list_display = ['name']
-    # empty_value_display = '-empty-'
-    # list_filter = ['name']
-    list_per_page = 25
-    ordering = ['name']
-
-admin.site.register(Make, MakeAdmin)
 
 class ConditionAdmin(admin.ModelAdmin):
     list_display = ['description']
