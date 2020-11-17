@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# CVCode settings
+.vscode/
+
+geckodriver.log
+

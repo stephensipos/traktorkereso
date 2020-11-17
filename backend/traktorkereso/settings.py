@@ -35,6 +35,8 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'traktorkereso.tractors.apps.TractorsConfig',
+    'traktorkereso.users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
