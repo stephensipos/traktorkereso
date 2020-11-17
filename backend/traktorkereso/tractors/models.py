@@ -28,6 +28,8 @@ class Tractor(models.Model):
     documents_type = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     image_url = models.CharField(max_length=2000, null=True, blank=True)
+    url = models.CharField(max_length=2000, null=True, blank=True)
+    fuel_type = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return f"{self.make}_{self.model}_{self.id}".lower().replace(" ", "_")
