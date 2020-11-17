@@ -25,7 +25,14 @@ class ConditionAdmin(admin.ModelAdmin):
 
 admin.site.register(Condition, ConditionAdmin)
 
-admin.site.register(Tractor)
+class TractorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'make', 'model', 'price', 'year', 'condition', 'hours', 'engine_power', 'fuel_type']
+    # empty_value_display = '-empty-'
+    list_filter = ['make', 'condition', 'fuel_type']
+    list_per_page = 25
+    ordering = ['id', 'price', 'year', 'hours', 'engine_power']
+
+admin.site.register(Tractor, TractorAdmin)
 
 class EquipmentAdmin(admin.ModelAdmin):
     list_display = ['tractor', 'name']
