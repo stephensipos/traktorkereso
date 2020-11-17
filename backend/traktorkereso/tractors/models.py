@@ -31,6 +31,9 @@ class Equipment(models.Model):
     tractor = models.ForeignKey(Tractor, null=False, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['tractor', 'name'], name='no duplicates')
