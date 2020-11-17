@@ -12,9 +12,9 @@ GET /api/users/<user_id>
 
 In the request URL, provide the following query parameters with values.
 
-| Parameter | Type   | Description                                   |
-|:----------|:-------|:----------------------------------------------|
-| user_id   | string | user_id (e-mail address) of the user to query |
+| Parameter | Type   | Description                   |
+|:----------|:-------|:------------------------------|
+| username  | string | username of the user to query |
 
 ## Request body
 
@@ -26,15 +26,19 @@ If successful, this method returns a response body with the following structure:
 
 ```text
 {
+  "username": string,
   "email": string,
-  "displayname": string
+  "firstName": string,
+  "lastName": string
 }
 ```
 
-| Property name | Value  | Description   |
-|:--------------|:-------|:--------------|
-| email         | string | email address |
-| displayname   | string | display name  |
+| Parameter | Type   | Description            |
+|:----------|:-------|:-----------------------|
+| username  | string | Username               |
+| email     | string | E-mail address         |
+| firstName | string | First name of the user |
+| lastName  | string | Last name of the user  |
 
 Otherwise the following structure is returned:
 
@@ -44,6 +48,10 @@ Otherwise the following structure is returned:
 }
 ```
 
-| Property name | Value   | Description                             |
-|:--------------|:--------|:----------------------------------------|
-| errorCode     | integer | 1 - The provided user_id does not exist |
+| Property name | Value   | Description                         |
+|:--------------|:--------|:------------------------------------|
+| errorCode     | integer | See the table below for the details |
+
+| Error code | Description                                 |
+|:-----------|:--------------------------------------------|
+| 1          | There is no user with the provided username |

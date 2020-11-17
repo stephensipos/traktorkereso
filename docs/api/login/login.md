@@ -12,10 +12,17 @@ POST /api/login
 
 In the request body, provide the following parameters:
 
-| Parameter | Type   | Description    |
-|:----------|:-------|:---------------|
-| email     | string | e-mail address |
-| password  | string | password       |
+```text
+{
+  "username": string,
+  "password": string
+}
+```
+
+| Parameter | Type   | Description |
+|:----------|:-------|:------------|
+| username  | string | Username    |
+| password  | string | Password    |
 
 ## Response
 
@@ -27,7 +34,7 @@ If successful, this method returns a response body with the following structure:
 }
 ```
 
-Otherwise the followin structure is returned:
+Otherwise the following structure is returned:
 
 ```text
 {
@@ -39,7 +46,7 @@ Otherwise the followin structure is returned:
 |:--------------|:--------|:------------------------------------|
 | errorCode     | integer | See the table below for the details |
 
-| Error code | Description                                    |
-|:-----------|:-----------------------------------------------|
-| 1          | The provided e-mail address not exists         |
-| 2          | The password not match with the e-mail address |
+| Error code | Description                                       |
+|:-----------|:--------------------------------------------------|
+| 1          | The provided username not exists                  |
+| 2          | The password not match with the provided username |

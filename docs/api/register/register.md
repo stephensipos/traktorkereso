@@ -12,17 +12,29 @@ POST /api/register
 
 In the request body, provide the following parameters:
 
-| Parameter   | Type   | Description      |
-|:------------|:-------|:-----------------|
-| email       | string | e-mail address   |
-| password    | string | password         |
-| displayname | string | name of the user |
+```text
+{
+  "username": string,
+  "password": string,
+  "email": string,
+  "firstName": string,
+  "lastName": string
+}
+```
+
+| Parameter | Type   | Description            |
+|:----------|:-------|:-----------------------|
+| username  | string | Username               |
+| password  | string | Password               |
+| email     | string | E-mail address         |
+| firstName | string | First name of the user |
+| lastName  | string | Last name of the user  |
 
 ## Response
 
 If successful, this method returns an empty response body.
 
-In the case of any errors, the following structure returned:
+Otherwise, the following structure is returned:
 
 ```text
 {
@@ -30,6 +42,11 @@ In the case of any errors, the following structure returned:
 }
 ```
 
-| Property name | Value   | Description                                       |
-|:--------------|:--------|:--------------------------------------------------|
-| errorCode     | integer | 1 - The provided e-mail address is already in use |
+| Property name | Value   | Description                         |
+|:--------------|:--------|:------------------------------------|
+| errorCode     | integer | See the table below for the details |
+
+| Error code | Description                                   |
+|:-----------|:----------------------------------------------|
+| 1          | The provided username is already in use       |
+| 2          | The provided e-mail address is already in use |
