@@ -63,7 +63,7 @@ def save_tractor(node, destination):
 
             document = read_product_page(href)
             tractor = prase_product_page(document)
-            tractor["hasznaltauto_url"] = href
+            tractor["url"] = href
 
             with open(local_file, "w", encoding='utf8') as f:
                 json.dump(tractor, f, ensure_ascii=False)
@@ -88,13 +88,13 @@ def prase_product_page(document):
 
     gyarto, tipus = parse_title(title_node)
 
-    tractor["kep_url"] = img_node.get("src", None)
-    tractor["gyarto"] = gyarto
-    tractor["tipus"] = tipus
+    tractor["image_url"] = img_node.get("src", None)
+    tractor["make"] = gyarto
+    tractor["model"] = tipus
 
-    tractor["leiras"] = parse_description(description_node)
+    tractor["description"] = parse_description(description_node)
 
-    tractor["felszereltseg"] = parse_equipment(equipment_node)
+    tractor["equipment"] = parse_equipment(equipment_node)
 
     return tractor    
 
@@ -160,14 +160,14 @@ makes = [
 
 
 field_codes = {
-    "Vételár:": "vetelar",
-    "Évjárat:": "evjarat",
-    "Állapot:": "allapot",
-    "Üzemóra:": "uzemora",
-    "Üzemanyag:": "uzemanyag",
-    "Maximális teljesítmény:": "maximalis_teljesitmeny",
-    "Okmányok jellege:": "okmanyok_jellege",
-    "Műszaki vizsga érvényes:": "muszaki_vizsga_ervenyes",
+    "Vételár:": "price",
+    "Évjárat:": "year",
+    "Állapot:": "condition",
+    "Üzemanyag": "fuel_type",
+    "Üzemóra:": "hours",
+    "Maximális teljesítmény:": "engine_power",
+    "Okmányok jellege:": "documents_type",
+    "Műszaki vizsga érvényes:": "documents_validity",
 }
 
 if __name__ == "__main__":
