@@ -14,15 +14,15 @@ In the request body, provide the following parameters:
 
 ```text
 {
-  "email": string,
+  "username": string,
   "password": string
 }
 ```
 
-| Parameter | Type   | Description    |
-|:----------|:-------|:---------------|
-| email     | string | e-mail address |
-| password  | string | password       |
+| Parameter | Type   | Description |
+|:----------|:-------|:------------|
+| username  | string | Username    |
+| password  | string | Password    |
 
 ## Response
 
@@ -46,7 +46,7 @@ Otherwise the following structure is returned:
 |:--------------|:--------|:------------------------------------|
 | errorCode     | integer | See the table below for the details |
 
-| Error code | Description                                    |
-|:-----------|:-----------------------------------------------|
-| 1          | The provided e-mail address not exists         |
-| 2          | The password not match with the e-mail address |
+| Error code | Description                                       |
+|:-----------|:--------------------------------------------------|
+| 1          | The provided username not exists                  |
+| 2          | The password not match with the provided username |

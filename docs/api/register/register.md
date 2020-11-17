@@ -14,17 +14,21 @@ In the request body, provide the following parameters:
 
 ```text
 {
-  "email": string,
+  "username": string,
   "password": string,
-  "displayname": string
+  "email": string,
+  "firstName": string,
+  "lastName": string
 }
 ```
 
-| Parameter   | Type   | Description      |
-|:------------|:-------|:-----------------|
-| email       | string | e-mail address   |
-| password    | string | password         |
-| displayname | string | name of the user |
+| Parameter | Type   | Description            |
+|:----------|:-------|:-----------------------|
+| username  | string | Username               |
+| password  | string | Password               |
+| email     | string | E-mail address         |
+| firstName | string | First name of the user |
+| lastName  | string | Last name of the user  |
 
 ## Response
 
@@ -44,4 +48,5 @@ Otherwise, the following structure is returned:
 
 | Error code | Description                                   |
 |:-----------|:----------------------------------------------|
-| 1          | The provided e-mail address is already in use |
+| 1          | The provided username is already in use       |
+| 2          | The provided e-mail address is already in use |
