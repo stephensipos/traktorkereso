@@ -1,5 +1,6 @@
 import re
 import os
+import argparse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -14,7 +15,7 @@ SHORT_WAIT=1
 MEDIUM_WAIT=10
 LONG_WAIT=60
 
-def main():
+def main(destination):
     driver = webdriver.Firefox()
 
     # Open search page
@@ -35,7 +36,7 @@ def main():
         tractor_nodes = [node.find_element(By.XPATH, "./..") for node in driver.find_elements_by_class_name("talalatisor-tartalom")]
 
         for node in tractor_nodes:
-            save_tractor(node)
+            save_tractor(node, destination)
 
         # Find "next" button
         next_btn = driver.find_element_by_xpath("//div[@id='talalati']//ul[contains(@class, 'pagination')]//li[contains(@class, 'next')]")
@@ -49,13 +50,13 @@ def main():
 
 
 
-def save_tractor(node):
+def save_tractor(node, destination):
     link = node.find_elements_by_xpath(".//div[contains(@class, 'cim-kontener')]/h3/a")[0]
     href = link.get_attribute("href")
 
     match = re.search(r"\d+$", href)
     if match:
-        local_file = match[0] + ".json"
+        local_file = os.path.join(destination, match[0] + ".json")
 
         if not os.path.exists(local_file):
             print(href)
@@ -170,4 +171,12 @@ field_codes = {
 }
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Scrapes tractors from hasznaltauto.hu", fromfile_prefix_chars="@")
+    parser.add_argument("destination", help="Folder to save the json files")
+    args = parser.parse_args()
+
+    if not os.path.isdir(args.destination):
+        print("destination is not a directory")
+        exit()
+
+    main(args.destination)
