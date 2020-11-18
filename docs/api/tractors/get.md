@@ -29,7 +29,7 @@ If successful, this method returns a response body with the following structure:
   "make": string,
   "model": string,
   "price": integer,
-  "year": integer,
+  "year": string,
   "condition": string,
   "hours": integer,
   "engine_power": integer,
@@ -37,6 +37,7 @@ If successful, this method returns a response body with the following structure:
   "documents_type": string,
   "description": string,
   "image_url": string,
+  "fuel_type": string,
   "equipment": [
       string
   ]
@@ -45,17 +46,18 @@ If successful, this method returns a response body with the following structure:
 
 | Property name   | Value   | Description                                         |
 |:----------------|:--------|:----------------------------------------------------|
-| manufacturer    | string  | Manufacturer's name                                 |
+| make            | string  | Manufacturer's name                                 |
 | model           | string  | Model                                               |
-| price           | string  | Price                                               |
-| year            | string  | Year of manufacture                                 |
-| condition       | integer | Condition                                           |
-| hours           | string  | Opering hours                                       |
+| price           | integer | Price                                               |
+| year            | string  | Year of manufacture, date format (YYYY-MM-DD)       |
+| condition       | string  | Condition                                           |
+| hours           | integer | Opering hours                                       |
 | engine_power    | integer | Maximum performane in kWh                           |
 | documents_valid | string  | Validity of the documents, date format (YYYY-MM-DD) |
 | documents_type  | string  | Type of the Documents                               |
 | description     | string  | Longer description                                  |
 | image_url       | string  | URL of the tractor's image                          |
+| fuel_type       | string  | Fuel type                                           |
 | equipment[]     | list    | Equipment list (string)                             |
 
 Otherwise the following structure is returned:
@@ -72,4 +74,4 @@ Otherwise the following structure is returned:
 
 | Error code | Description                            |
 |:-----------|:---------------------------------------|
-| 1          | The provided tractor id does not exist |
+| 1          | The provided tractor ID does not exist |
