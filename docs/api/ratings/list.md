@@ -1,6 +1,6 @@
 # Ratings: list
 
-Returns all ratings of the specified tractor.
+Returns all ratings written for the specified tractor.
 
 ## HTTP Request
 
@@ -26,15 +26,24 @@ If successful, this method returns a response body with the following structure:
 
 ```text
 {
-  "ids": [
-    integer
+  "ratings": [
+    {
+      "tractor_id": integer,
+      "username": string,
+      "stars": integer,
+      "comment": string
+    }
   ]
 }
 ```
 
-| Property name | Value | Description                                                  |
-|:--------------|:------|:-------------------------------------------------------------|
-| ids   | list  | List of user IDs who posted rating for the specified tractor |
+| Property name      | Value   | Description                                                  |
+|:-------------------|:--------|:-------------------------------------------------------------|
+| ratings            | list    | List of ratings. Empty if there is no raing for the tractor. |
+| ratings.tractor_id | integer | Tractor ID                                                   |
+| ratings.username   | string  | Username                                                     |
+| ratings.stars      | integer | Value of the rating (1-5)                                    |
+| ratings.comment    | string  | Comment                                                      |
 
 Otherwise the following structure is returned:
 
