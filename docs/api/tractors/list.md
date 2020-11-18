@@ -1,11 +1,11 @@
 # Tractors: list
 
-Sends back the details of a tractor identified by its ID
+Performs a query and sends back a list with tractor ids.
 
 ## HTTP Request
 
 ```text
-GET /api/tractors?[make=<make>&model=<model>&condition=<condition>&price_min=<price_min>&price_max=<price_max>&hours_min=<hours_min>&hours_max=<hours_max>]
+GET /api/tractors
 ```
 
 ## Request parameters
@@ -32,15 +32,15 @@ If successful, this method returns a response body with the following structure:
 
 ```text
 {
-  "id_list": [
+  "ids": [
     integer
   ]
 }
 ```
 
-| Property name | Value | Description                                                 |
-|:--------------|:------|:------------------------------------------------------------|
-| id_list       | list  | ID list from the result array. Empty if there is no result. |
+| Property name | Value | Description                                                         |
+|:--------------|:------|:--------------------------------------------------------------------|
+| ids           | list  | Tractor ID list from the result array. Empty if there is no result. |
 
 Otherwise the following structure is returned:
 
