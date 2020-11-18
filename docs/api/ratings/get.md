@@ -1,21 +1,21 @@
 # Ratings: get
 
-Returns the parameters of a rating
+Returns the details of a rating for a specific tractor written by a user.
 
 ## HTTP Request
 
 ```text
-GET /api/tractors/<ID>/ratings/<user_id>
+GET /api/tractors/<ID>/ratings/<username>
 ```
 
 ## Request parameters
 
 In the request URL, provide the following query parameters with values.
 
-| Parameter | Type    | Description                              |
-|:----------|:--------|:-----------------------------------------|
-| ID        | integer | The ID of the specified tractor          |
-| user_id   | integer | The ID of the user the rating belongs to |
+| Parameter | Type    | Description                                |
+|:----------|:--------|:-------------------------------------------|
+| ID        | integer | The ID of the specified tractor            |
+| username  | string  | Username of the user the rating belongs to |
 
 ## Request body
 
@@ -27,17 +27,19 @@ If successful, this method returns a response body with the following structure:
 
 ```text
 {
-  "id": integer,
   "tractor_id": integer,
-  "stars": integer
+  "username": string,
+  "stars": integer,
+  "comment": string
 }
 ```
 
 | Property name | Value   | Description               |
 |:--------------|:--------|:--------------------------|
-| id            | integer | id of the rating          |
 | tractor_id    | integer | Tractor ID                |
+| username      | string  | Username                  |
 | stars         | integer | Value of the rating (1-5) |
+| comment       | string  | Comment                   |
 
 Otherwise the following structure is returned:
 
@@ -51,7 +53,7 @@ Otherwise the following structure is returned:
 |:--------------|:--------|:------------------------------------|
 | errorCode     | integer | See the table below for the details |
 
-| Error code | Description                                               |
-|:-----------|:----------------------------------------------------------|
-| 1          | There is no tractor with the specified ID                 |
-| 2          | There is no rating with the specified tractor and user ID |
+| Error code | Description                                                |
+|:-----------|:-----------------------------------------------------------|
+| 1          | There is no tractor with the specified ID                  |
+| 2          | There is no rating with the specified tractor and username |
