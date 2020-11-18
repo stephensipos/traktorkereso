@@ -1,4 +1,4 @@
-# Ratings: list
+# Ratings: delete
 
 Delete the authenticated users rating from the specified tractor. Needs valid authentication. The bearer token has to be sent among the header parameters.
 
