@@ -48,6 +48,11 @@ Hozzunk létre egy adminisztrátor felhasználót:
 ### Traktorok letöltése Használtautó.hu-ról
 
 Opcionálisan, a traktorlistát fel lehet tölteni a [Használtautó.hu](https://hasznaltauto.hu)-n megjelenö hirdetésekkel.
+
+A script seleniumot és Firefoxot használ, ezért a futtatáshoz a következöket telepíteni kell:
+  * [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  * [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+  
 ```
 (venv) ~/traktorkereso/backend > mkdir data
 (venv) ~/traktorkereso/backend > python utils/tractorspider.py data
