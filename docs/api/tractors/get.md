@@ -55,7 +55,7 @@ If successful, this method returns a response body with the following structure:
 | documents_valid | string  | Validity of the documents, date format (YYYY-MM-DD) |
 | documents_type  | string  | Type of the Documents                               |
 | description     | string  | Longer description                                  |
-| imageUrl        | string  | URL of the tractor's image                          |
+| image_url       | string  | URL of the tractor's image                          |
 | equipment[]     | list    | Equipment list (string)                             |
 
 Otherwise the following structure is returned:
