@@ -30,7 +30,7 @@ If successful, this method returns a response body with the following structure:
 
 ```text
 {
-  "session_id": string
+  "bearer": string
 }
 ```
 
