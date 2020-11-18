@@ -1,4 +1,4 @@
-# Ratings: list
+# Ratings: post
 
 POST a rating to the specified tractor. Needs valid authentication. The bearer token has to be sent among the header parameters.
 
