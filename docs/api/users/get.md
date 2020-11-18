@@ -28,29 +28,29 @@ If successful, this method returns a response body with the following structure:
 {
   "username": string,
   "email": string,
-  "firstName": string,
-  "lastName": string
+  "first_name": string,
+  "last_name": string
 }
 ```
 
-| Parameter | Type   | Description            |
-|:----------|:-------|:-----------------------|
-| username  | string | Username               |
-| email     | string | E-mail address         |
-| firstName | string | First name of the user |
-| lastName  | string | Last name of the user  |
+| Parameter  | Type   | Description            |
+|:-----------|:-------|:-----------------------|
+| username   | string | Username               |
+| email      | string | E-mail address         |
+| first_name | string | First name of the user |
+| last_name  | string | Last name of the user  |
 
 Otherwise the following structure is returned:
 
 ```text
 {
-  "errorCode": integer
+  "error_code": integer
 }
 ```
 
 | Property name | Value   | Description                         |
 |:--------------|:--------|:------------------------------------|
-| errorCode     | integer | See the table below for the details |
+| error_code     | integer | See the table below for the details |
 
 | Error code | Description                                 |
 |:-----------|:--------------------------------------------|
