@@ -19,7 +19,7 @@ _Linux_
 
 _Windows_
 ```
-~/traktorkereso/backend > venv/Scripts/activate.bat
+~\traktorkereso\backend > venv\Scripts\activate.bat
 ```
 
 Telepítsük fel a szükséges függöségeket:
