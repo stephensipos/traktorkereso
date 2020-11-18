@@ -1,0 +1,20 @@
+[
+    {"model": "tractors.condition", "pk": 1, "fields": {"description": "Normál"}},
+    {"model": "tractors.condition", "pk": 2, "fields": {"description": "Kitűnő"}},
+    {"model": "tractors.condition", "pk": 3, "fields": {"description": "Megkímélt"}},
+    {"model": "tractors.condition", "pk": 4, "fields": {"description": "Újszerű"}},
+    {"model": "tractors.condition", "pk": 5, "fields": {"description": "Sérülésmentes"}},
+    {"model": "tractors.condition", "pk": 6, "fields": {"description": "Sérült"}},
+    {"model": "tractors.condition", "pk": 7, "fields": {"description": "Enyhén sérült"}},
+    {"model": "tractors.condition", "pk": 8, "fields": {"description": "Eleje sérült"}},
+    {"model": "tractors.condition", "pk": 9, "fields": {"description": "Hátulja sérült"}},
+    {"model": "tractors.condition", "pk": 10, "fields": {"description": "Baloldala sérült"}},
+    {"model": "tractors.condition", "pk": 11, "fields": {"description": "Jobboldala sérült"}},
+    {"model": "tractors.condition", "pk": 12, "fields": {"description": "Hiányos"}},
+    {"model": "tractors.condition", "pk": 13, "fields": {"description": "Fődarab hibás"}},
+    {"model": "tractors.condition", "pk": 14, "fields": {"description": "Motorhibás"}},
+    {"model": "tractors.condition", "pk": 15, "fields": {"description": "Váltóhibás"}},
+    {"model": "tractors.condition", "pk": 16, "fields": {"description": "Elektronika hibás"}},
+    {"model": "tractors.condition", "pk": 17, "fields": {"description": "Fékhibás"}},
+    {"model": "tractors.condition", "pk": 18, "fields": {"description": "Futómű hibás"}}
+]
