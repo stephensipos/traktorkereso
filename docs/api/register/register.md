@@ -38,7 +38,7 @@ Otherwise, the following structure is returned:
 
 ```text
 {
-  "errorCode": integer
+  "error_code": integer
 }
 ```
 
