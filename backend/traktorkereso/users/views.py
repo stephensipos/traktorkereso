@@ -7,7 +7,7 @@ from django.views.generic import View
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
+from django.db import IntegrityError
 from rest_framework.authtoken.models import Token
 
 # Create your views here.
@@ -25,8 +25,11 @@ class Login(View):
                 {"error_code": 1},
                 status=HTTPStatus.UNAUTHORIZED
             )
-        else: 
-            token = Token.objects.create(user=user)
+        else:
+            try:
+                token = Token.objects.create(user=user)
+            except IntegrityError:
+                token = Token.objects.get(user=user)
 
             return JsonResponse(
                 {"bearer": token.key}
