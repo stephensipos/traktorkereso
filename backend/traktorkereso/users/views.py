@@ -6,13 +6,32 @@ from django.http import HttpResponse
 from django.views.generic import View
 
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+
+from rest_framework.authtoken.models import Token
 
 # Create your views here.
 
 
 class Login(View):
     def post(self, request):
-        return JsonResponse({})
+        body = json.loads(request.body)
+        username = body.get("username")
+        password = body.get("password")
+        user = authenticate(username=username, password=password)
+
+        if user is None:
+            return JsonResponse(
+                {"error_code": 1},
+                status=HTTPStatus.UNAUTHORIZED
+            )
+        else: 
+            token = Token.objects.create(user=user)
+
+            return JsonResponse(
+                {"bearer": token.key}
+            )
+        
 
 class Register(View):
     def post(self, request):
@@ -69,3 +88,4 @@ class Users(View):
                 {"error_code": 1},
                 status=HTTPStatus.NOT_FOUND
             )
+
