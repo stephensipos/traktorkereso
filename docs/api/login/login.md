@@ -34,6 +34,8 @@ If successful, this method returns a response body with the following structure:
 }
 ```
 
+If the user already has an existing token, the same token is returned.
+
 Otherwise the following structure is returned:
 
 ```text
