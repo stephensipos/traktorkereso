@@ -48,5 +48,5 @@ Otherwise the following structure is returned:
 
 | Error code | Description                                       |
 |:-----------|:--------------------------------------------------|
-| 1          | The provided username not exists                  |
-| 2          | The password not match with the provided username |
+| 1          | Authentication failed                             |
+
