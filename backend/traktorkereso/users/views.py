@@ -19,8 +19,8 @@ class Register(View):
         body = json.loads(request.body)
 
         # Check if username exists
-        username=body.get("username", "").strip().lower()
-
+        username=body.get("username", "").strip()
+        
         if User.objects.filter(username=username).exists():
             return JsonResponse(
                 {"error_code": 1},
@@ -53,5 +53,19 @@ class Register(View):
     
 
 class Users(View):
-    def get(self, request):
-        return JsonResponse({})
+    def get(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+
+            return JsonResponse({
+                "username": user.username,
+                "email": user.email,
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+            })
+
+        except:
+            return JsonResponse(
+                {"error_code": 1},
+                status=HTTPStatus.NOT_FOUND
+            )
