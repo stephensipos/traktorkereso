@@ -86,13 +86,13 @@ Otherwise the following structure is returned:
 
 ```text
 {
-  "errorCode": integer
+  "error_code": integer
 }
 ```
 
 | Property name | Value   | Description                         |
 |:--------------|:--------|:------------------------------------|
-| errorCode     | integer | See the table below for the details |
+| error_code    | integer | See the table below for the details |
 
 | Error code | Description           |
 |:-----------|:----------------------|
