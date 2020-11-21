@@ -1,6 +1,6 @@
 # Users: get
 
-Gets a user's data by user_id
+Gets a user's data by username
 
 ## HTTP Request
 
