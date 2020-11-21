@@ -6,7 +6,7 @@ from django.shortcuts import render
 class Ratings(View):
     def get(self, request, tractor_id, username):
         try:
-            tractor_id = Tractors.
+
 
             return JsonResponse({
                 "tractor_id": ratings.tractor_id,
