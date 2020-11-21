@@ -39,3 +39,11 @@ class Equipment(models.Model):
             models.UniqueConstraint(fields=['tractor', 'name'], name='no duplicates')
         ]
 
+class Ratings(models.Model):
+    tractor_id = models.IntegerField()
+    username = models.CharField(max_length=200)
+    stars = models.IntegerField(null=True, blank=True)
+    comment = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.stars

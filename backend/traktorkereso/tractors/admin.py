@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import Condition
 from .models import Tractor
 from .models import Equipment
+from .models import Ratings
 
 # Register your models here.
 
@@ -32,3 +33,13 @@ class EquipmentAdmin(admin.ModelAdmin):
     ordering = ['tractor', 'name']
 
 admin.site.register(Equipment, EquipmentAdmin)
+
+class RatingsAdmin(admin.ModelAdmin):
+    list_display = ['tractor_id', 'username', 'stars', 'comment']
+    # empty_value_display = '-empty-'
+    list_filter = ['stars', 'comment']
+    list_per_page = 25
+    ordering = ['stars']
+
+admin.site.register(Ratings, RatingsAdmin)
+
