@@ -3,16 +3,16 @@ from django.shortcuts import render
 # Create your views here.
 
 
-class Ratings(View):
+class Rating(View):
     def get(self, request, tractor_id, username):
         try:
 
 
             return JsonResponse({
-                "tractor_id": ratings.tractor_id,
-                "username": ratings.username,
-                "stars": ratings.stars,
-                "comment": ratings.comment,
+                "tractor_id": rating.tractor,
+                "username": rating.user,
+                "stars": rating.stars,
+                "comment": rating.comment,
             })
 
         except:

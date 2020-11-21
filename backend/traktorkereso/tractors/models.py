@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -39,9 +40,9 @@ class Equipment(models.Model):
             models.UniqueConstraint(fields=['tractor', 'name'], name='no duplicates')
         ]
 
-class Ratings(models.Model):
-    tractor_id = models.IntegerField()
-    username = models.CharField(max_length=200)
+class Rating(models.Model):
+    tractor= models.ForeignKey(Tractor, null=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,null=True, on_delete=models.SET_NULL)
     stars = models.IntegerField(null=True, blank=True)
     comment = models.CharField(max_length=200, null=True, blank=True)
 
