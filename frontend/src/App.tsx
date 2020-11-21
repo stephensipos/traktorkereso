@@ -1,13 +1,9 @@
-import React from 'react';
-import './App.scss';
+import React from 'react'
 
-function App() {
-  console.log("hello")
-  return (
-    <div className="App">
-      Traktorkereső
-    </div>
-  );
+import Router from "./Router"
+
+export default () => {
+	return (
+		<Router />
+	)
 }
-
-export default App;
