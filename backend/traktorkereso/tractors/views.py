@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 
 class Rating(View):
-    def get(self, request, tractor_id, username):
+    def get(self, request, tractor, user):
         try:
 
 
