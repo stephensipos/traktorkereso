@@ -5,7 +5,7 @@ Gets a user's data by user_id
 ## HTTP Request
 
 ```text
-GET /api/users/<user_id>
+GET /api/users/<username>
 ```
 
 ## Request parameters
