@@ -20,7 +20,7 @@ class TractorView(View):
     def get(self, request, tractor_id):
         try:
             tractor = Tractor.objects.get(pk=tractor_id)
-            equipments = Equipment.objects.filter(tractor__id=tractor_id)
+            equipments = Equipment.objects.filter(tractor=tractor)
 
             equipment_arr = [e.name for e in equipments]
 
@@ -68,8 +68,7 @@ class TractorList(View):
                     filter_params["hours__lte"] = val     
 
             tractors = Tractor.objects.filter(** filter_params)
-            ids = [t.id for t in tractors]
-            equipments = Equipment.objects.filter(tractor__id__in=ids)
+            equipments = Equipment.objects.filter(tractor__in=tractors)
             
             equipment_dict = {} 
             for e in equipments:
@@ -113,11 +112,11 @@ class Compare(View):
             if ("tractors" not in request.GET):
                 return JsonResponse(
                     {"error_code": 1},
-                    status=HTTPStatus.NOT_FOUND
+                    status=HTTPStatus.BAD_REQUEST
                 )
                               
             tractors = Tractor.objects.filter(id__in=request.GET.getlist("tractors"))
-            equipments = Equipment.objects.filter(tractor__id__in=request.GET.getlist("tractors"))
+            equipments = Equipment.objects.filter(tractor__in=tractors)
             equipment_dict = {} 
             for e in equipments:
                 if (e.tractor_id not in equipment_dict):
