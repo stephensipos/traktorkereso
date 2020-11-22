@@ -48,7 +48,6 @@ If successful, this method returns a response body with the following structure:
       "mark" : {
         "price": boolean,
         "year": boolean,
-        "condition": boolean,
         "hours": boolean,
         "engine_power": boolean,
         "documents_valid": boolean
@@ -77,7 +76,6 @@ If successful, this method returns a response body with the following structure:
 | tractors[].parameters.equipment[]     | list    | Equipment list (string)                                    |
 | tractors[].mark.price                 | boolean | Marked if this tractor is the best based on this parameter |
 | tractors[].mark.year                  | boolean | Marked if this tractor is the best based on this parameter |
-| tractors[].mark.condition             | boolean | Marked if this tractor is the best based on this parameter |
 | tractors[].mark.hours                 | boolean | Marked if this tractor is the best based on this parameter |
 | tractors[].mark.engine_power          | boolean | Marked if this tractor is the best based on this parameter |
 | tractors[].mark.documents_valid       | boolean | Marked if this tractor is the best based on this parameter |
