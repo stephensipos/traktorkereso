@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from .models import Tractor
 from .models import Equipment
+from .models import Rating
 
 # Create your views here.
 
@@ -179,6 +180,9 @@ class RatingView(View):
                 status=HTTPStatus.NOT_FOUND
             )
         try:
+
+            rating=Rating.objects.filter(tractor__pk=tractor_id,user__username=username)
+
             return JsonResponse({
                 "tractor_id": rating.tractor,
                 "username": rating.user,
