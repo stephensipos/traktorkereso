@@ -22,4 +22,9 @@ Az NPM a NodeJS csomagkezelője, a NodeJS-szel együtt települ.
 
 
 # ENV fájl
-Jelenleg még nincs, ha lesz, készül hozzá leírás.
+Az example env fájl (`env.example`) alapján készíteni kell egy saját env fájlt `.env` néven a frontend gyökerében.
+
+## Változók:
+- `BROWSER`: nyíljon-e meg a böngésző a frontend indításakor vagy sem (dev env)
+- `PORT`: milyen porton fusson a frontend (dev env)
+- `REACT_APP_API_BASE_URL`: Mi a backend api base url-je (beleértve a `/api` előtagot is)
