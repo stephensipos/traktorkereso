@@ -47,4 +47,4 @@ class Rating(models.Model):
     comment = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        return self.tractor+"_"+self.user+"_"+str(self.stars)
+        return str(self.tractor)+"_"+str(self.user)+"_"+str(self.stars)

@@ -1,8 +1,9 @@
+import json
 from http import HTTPStatus
 from django.views.generic import View
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.contrib.auth.models import User, UserManager
+from django.contrib.auth.models import User
 
 from .models import Tractor
 from .models import Equipment
@@ -183,7 +184,6 @@ class RatingView(View):
             )
 
         try:
-            tractor = Tractor.objects.get(pk=tractor_id)
             rating = (Rating.objects.filter(tractor=tractor, user__username=username)).first()
 
             return JsonResponse({
@@ -197,4 +197,16 @@ class RatingView(View):
             return JsonResponse(
                 {"error_code": 2,},
                 status=HTTPStatus.NOT_FOUND
+            )
+    def post(self, request):
+        try:
+            token = json.loads(request.header)
+            body = json.loads(request.body)
+            stars = body.get("stars")
+            comment = body.get("comment")
+
+        except:
+            return JsonResponse(
+                {"error_code": 1},
+                status=HTTPStatus.UNAUTHORIZED                  
             )
