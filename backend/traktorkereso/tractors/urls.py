@@ -7,4 +7,5 @@ urlpatterns = [
     path('tractors', views.TractorList.as_view()),
     path('tractors/<int:tractor_id>', views.TractorView.as_view()),
     path('tractors/<int:tractor_id>/ratings/<str:username>', views.RatingView.as_view(), name='tractors'),
+    path('tractors/<int:tractor_id>/ratings', views.RatingView.as_view()),
 ] 
