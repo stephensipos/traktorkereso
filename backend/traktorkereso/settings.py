@@ -29,7 +29,7 @@ if 'DJANGO_DEBUG_FALSE' in os.environ:
     ALLOWED_HOSTS = [os.environ['SITENAME']]
 else:
     DEBUG = True
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
