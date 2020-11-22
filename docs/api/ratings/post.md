@@ -36,7 +36,7 @@ In the request body, provide the following parameters:
 
 | Property name | Type   | Description                    |
 |:--------------|:-------|:-------------------------------|
-| Authorization | string | Bearer token, prefix "bearer"! |
+| Authorization | string | Bearer token, prefix "Bearer"! |
 
 ## Response
 
