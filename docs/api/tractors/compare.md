@@ -1,6 +1,7 @@
 # Tractors: compare
 
 Performs a compation between the selected tractors, provided by an ID list. 
+**Keep in mind that in case of equal parameters there can be multiple best marked tractors!**
 
 ## HTTP Request
 
