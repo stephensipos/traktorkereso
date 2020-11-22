@@ -172,16 +172,18 @@ class Compare(View):
 
 class RatingView(View):
     def get(self, request, tractor_id, username):
+
         try:
             tractor = Tractor.objects.get(pk=tractor_id)
+
         except:
             return JsonResponse(
                 {"error_code": 1},
-                status=HTTPStatus.NOT_FOUND
+                status=HTTPStatus.NOT_FOUND                   
             )
-        try:
 
-            rating=Rating.objects.filter(tractor__pk=tractor_id,user__username=username)
+        try:
+            rating = Rating.objects.filter(rating__tractor=tractor, rating__user=username)
 
             return JsonResponse({
                 "tractor_id": rating.tractor,
@@ -192,6 +194,6 @@ class RatingView(View):
 
         except:
             return JsonResponse(
-                {"error_code": 2},
+                {"error_code": 2,},
                 status=HTTPStatus.NOT_FOUND
             )
