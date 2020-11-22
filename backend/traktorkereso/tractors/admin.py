@@ -35,9 +35,9 @@ class EquipmentAdmin(admin.ModelAdmin):
 admin.site.register(Equipment, EquipmentAdmin)
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ['tractor', 'user', 'stars', 'comment']
+    list_display = ['id', 'tractor', 'user', 'stars', 'comment']
     # empty_value_display = '-empty-'
-    list_filter = ['tractor', 'stars']
+    list_filter = ['stars', 'user']
     list_per_page = 25
     ordering = ['stars']
 

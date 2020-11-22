@@ -41,10 +41,10 @@ class Equipment(models.Model):
         ]
 
 class Rating(models.Model):
-    tractor= models.ForeignKey(Tractor, null=False, on_delete=models.CASCADE)
-    user = models.ForeignKey(User,null=True, on_delete=models.SET_NULL)
+    tractor = models.ForeignKey(Tractor, null=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,null=True, on_delete=models.DO_NOTHING)
     stars = models.IntegerField(null=True, blank=True)
     comment = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        return self.stars
+        return str(self.tractor)+"_"+str(self.user)+"_"+str(self.stars)

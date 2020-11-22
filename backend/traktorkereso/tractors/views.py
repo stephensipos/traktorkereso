@@ -1,10 +1,13 @@
+import json
 from http import HTTPStatus
 from django.views.generic import View
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 
 from .models import Tractor
 from .models import Equipment
+from .models import Rating
 
 # Create your views here.
 
@@ -167,20 +170,42 @@ class Compare(View):
             )              
 
 
-class Rating(View):
-    def get(self, request, tractor, user):
-        try:
+class RatingView(View):
+    def get(self, request, tractor_id, username):
 
+        try:
+            tractor = Tractor.objects.get(pk=tractor_id)
+
+        except:
+            return JsonResponse(
+                {"error_code": 1},
+                status=HTTPStatus.NOT_FOUND                   
+            )
+
+        try:
+            rating = (Rating.objects.filter(tractor=tractor, user__username=username)).first()
 
             return JsonResponse({
-                "tractor_id": rating.tractor,
-                "username": rating.user,
+                "tractor_id": tractor_id,
+                "username": rating.user.username,
                 "stars": rating.stars,
                 "comment": rating.comment,
             })
 
         except:
             return JsonResponse(
-                {"error_code": 1},
+                {"error_code": 2,},
                 status=HTTPStatus.NOT_FOUND
+            )
+    def post(self, request):
+        try:
+            token = json.loads(request.header)
+            body = json.loads(request.body)
+            stars = body.get("stars")
+            comment = body.get("comment")
+
+        except:
+            return JsonResponse(
+                {"error_code": 1},
+                status=HTTPStatus.UNAUTHORIZED                  
             )
