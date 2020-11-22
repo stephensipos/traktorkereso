@@ -2,7 +2,7 @@ from http import HTTPStatus
 from django.views.generic import View
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, UserManager
 
 from .models import Tractor
 from .models import Equipment
@@ -183,11 +183,12 @@ class RatingView(View):
             )
 
         try:
-            rating = Rating.objects.filter(rating__tractor=tractor, rating__user=username)
+            tractor = Tractor.objects.get(pk=tractor_id)
+            rating = (Rating.objects.filter(tractor=tractor, user__username=username)).first()
 
             return JsonResponse({
-                "tractor_id": rating.tractor,
-                "username": rating.user,
+                "tractor_id": tractor_id,
+                "username": rating.user.username,
                 "stars": rating.stars,
                 "comment": rating.comment,
             })
