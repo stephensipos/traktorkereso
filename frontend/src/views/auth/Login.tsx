@@ -1,16 +1,18 @@
 import React, { useState } from "react"
-import Container from '@material-ui/core/Container'
+import Container from "@material-ui/core/Container"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { makeStyles } from "@material-ui/core/styles"
 import Avatar from "@material-ui/core/Avatar"
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
-import WarningOutlinedIcon from '@material-ui/icons/WarningOutlined'
+import WarningOutlinedIcon from "@material-ui/icons/WarningOutlined"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
 import Grid from "@material-ui/core/Grid"
 import Alert from "@material-ui/lab/Alert"
 import axios from "axios"
+import { useSelector, useDispatch } from "react-redux"
+import { userAuthenticated } from "../../store/actions"
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -34,11 +36,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Login() {
-    const classes = useStyles()
-    const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({})
-    const [authenticationFailed, setAuthenticationFailed] = useState<boolean>(false)
-    
-    const onSubmit = (event: React.FormEvent): void => {
+	const classes = useStyles()
+	const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({})
+	const [authenticationFailed, setAuthenticationFailed] = useState<boolean>(false)
+	const dispatch = useDispatch()
+
+	const onSubmit = (event: React.FormEvent): void => {
 		event.preventDefault()
 
 		let formData: FormData = new FormData(event.target as HTMLFormElement)
@@ -56,9 +59,9 @@ export default function Login() {
 			setFieldErrors({})
 		}
 
-        axios({
+		axios({
 			method: "post",
-			url: `${process.env.REACT_APP_API_BASE_URL}/api/login`,
+			url: `${process.env.REACT_APP_API_BASE_URL}/login`,
 			data: {
 				username: formFields.username,
 				password: formFields.password,
@@ -67,6 +70,10 @@ export default function Login() {
 			.then(response => {
 				if (response.status === 200) {
 					setAuthenticationFailed(false);
+
+					dispatch(userAuthenticated({
+						token: response.data.bearer,
+					}))
 				}
 			})
 			.catch(error => {
@@ -83,9 +90,9 @@ export default function Login() {
 				}
 			})
 
-    }
+	}
 
-    const validateFields = (fields: { [key: string]: any }): { [key: string]: string } => {
+	const validateFields = (fields: { [key: string]: any }): { [key: string]: string } => {
 		let errors: { [key: string]: string } = {}
 
 		if (fields.hasOwnProperty("username")) {
@@ -103,86 +110,86 @@ export default function Login() {
 		return errors
 	}
 
-    const renderIcon = function () {
-        if (authenticationFailed) {
-            return (
-                <WarningOutlinedIcon />
-                )
-        } else {
-            return (
-                <LockOutlinedIcon />
-                )
-        }
-    }
+	const renderIcon = function () {
+		if (authenticationFailed) {
+			return (
+				<WarningOutlinedIcon />
+			)
+		} else {
+			return (
+				<LockOutlinedIcon />
+			)
+		}
+	}
 
-    const renderTitle = function () {
-        if (authenticationFailed) {
-            return "Authentication failed!"
-        } else {
-            return "Sign up"
-        }
-    }
+	const renderTitle = function () {
+		if (authenticationFailed) {
+			return "Authentication failed!"
+		} else {
+			return "Sign up"
+		}
+	}
 
-    const showAlert = function() {
-        if (authenticationFailed) {
-            return (
-                <Grid item xs={12}>
-                    <Alert severity="error">Authentication failed!</Alert>
-                </Grid>
-            )
-        }
-    }
-    return (
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Log In!
+	const showAlert = function () {
+		if (authenticationFailed) {
+			return (
+				<Grid item xs={12}>
+					<Alert severity="error">Authentication failed!</Alert>
+				</Grid>
+			)
+		}
+	}
+	return (
+		<Container component="main" maxWidth="xs">
+			<CssBaseline />
+			<div className={classes.paper}>
+				<Avatar className={classes.avatar}>
+					<LockOutlinedIcon />
+				</Avatar>
+				<Typography component="h1" variant="h5">
+					Log In!
                 </Typography>
 
-                <form className={classes.form} noValidate onSubmit={onSubmit}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="username"
-                                label="Username"
-                                name="username"
-                                error={fieldErrors.hasOwnProperty("username")}
-                                helperText={fieldErrors.hasOwnProperty("username") && fieldErrors["username"]}
-                                />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                error={fieldErrors.hasOwnProperty("password")}
-                                helperText={fieldErrors.hasOwnProperty("password") && fieldErrors["password"]}
-                                />
-                        </Grid>
-                        {showAlert()}
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            >
-                            Sign Up
+				<form className={classes.form} noValidate onSubmit={onSubmit}>
+					<Grid container spacing={2}>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="username"
+								label="Username"
+								name="username"
+								error={fieldErrors.hasOwnProperty("username")}
+								helperText={fieldErrors.hasOwnProperty("username") && fieldErrors["username"]}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								name="password"
+								label="Password"
+								type="password"
+								id="password"
+								error={fieldErrors.hasOwnProperty("password")}
+								helperText={fieldErrors.hasOwnProperty("password") && fieldErrors["password"]}
+							/>
+						</Grid>
+						{showAlert()}
+						<Button
+							type="submit"
+							fullWidth
+							variant="contained"
+							color="primary"
+							className={classes.submit}
+						>
+							Sign Up
                         </Button>
-                    </Grid>
-               </form>
-            </div>
-        </Container>
-    )
+					</Grid>
+				</form>
+			</div>
+		</Container>
+	)
 }
