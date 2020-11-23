@@ -34,9 +34,9 @@ In the request body, provide the following parameters:
 
 ## Header parameters
 
-| Property name | Type   | Description  |
-|:--------------|:-------|:-------------|
-| Authorization | string | Bearer token |
+| Property name | Type   | Description                    |
+|:--------------|:-------|:-------------------------------|
+| Authorization | string | Bearer token, prefix "Bearer"! |
 
 ## Response
 

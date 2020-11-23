@@ -1,9 +1,14 @@
 import json
+
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from http import HTTPStatus
+from django.db.models.query_utils import refs_expression
 from django.views.generic import View
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 from .models import Tractor
 from .models import Equipment
@@ -15,7 +20,7 @@ class TractorView(View):
     def get(self, request, tractor_id):
         try:
             tractor = Tractor.objects.get(pk=tractor_id)
-            equipments = Equipment.objects.filter(tractor__id=tractor_id)
+            equipments = Equipment.objects.filter(tractor=tractor)
 
             equipment_arr = [e.name for e in equipments]
 
@@ -63,8 +68,7 @@ class TractorList(View):
                     filter_params["hours__lte"] = val     
 
             tractors = Tractor.objects.filter(** filter_params)
-            ids = [t.id for t in tractors]
-            equipments = Equipment.objects.filter(tractor__id__in=ids)
+            equipments = Equipment.objects.filter(tractor__in=tractors)
             
             equipment_dict = {} 
             for e in equipments:
@@ -108,11 +112,11 @@ class Compare(View):
             if ("tractors" not in request.GET):
                 return JsonResponse(
                     {"error_code": 1},
-                    status=HTTPStatus.NOT_FOUND
+                    status=HTTPStatus.BAD_REQUEST
                 )
                               
             tractors = Tractor.objects.filter(id__in=request.GET.getlist("tractors"))
-            equipments = Equipment.objects.filter(tractor__id__in=request.GET.getlist("tractors"))
+            equipments = Equipment.objects.filter(tractor__in=tractors)
             equipment_dict = {} 
             for e in equipments:
                 if (e.tractor_id not in equipment_dict):
@@ -171,7 +175,7 @@ class Compare(View):
             )              
 
 
-class RatingView(View):
+class RatingView(APIView):
     def get(self, request, tractor_id, username):
 
         try:
@@ -198,15 +202,40 @@ class RatingView(View):
                 {"error_code": 2,},
                 status=HTTPStatus.NOT_FOUND
             )
-    def post(self, request):
+            
+    def post(self, request, tractor_id):
+
+        if not request.user.is_authenticated:
+            return JsonResponse(
+                {"error_code": 1},
+                status=HTTPStatus.UNAUTHORIZED
+            )
+            
         try:
-            token = json.loads(request.header)
-            body = json.loads(request.body)
-            stars = body.get("stars")
-            comment = body.get("comment")
+            tractor = Tractor.objects.get(pk=tractor_id)
 
         except:
             return JsonResponse(
-                {"error_code": 1},
-                status=HTTPStatus.UNAUTHORIZED                  
+                {"error_code": 2},
+                status=HTTPStatus.NOT_FOUND
+            )
+
+        body = json.loads(request.body)
+        stars = body.get("stars")
+        comment = body.get("comment","")
+        if(stars>5 or stars<0):
+            return JsonResponse(
+                {"error_code": 3},
+                status=HTTPStatus.BAD_REQUEST
+            )
+
+        else:
+            r=Rating.objects.create(
+                tractor=tractor,
+                user=request.user,
+                stars=stars,
+                comment=comment)
+            r.save()
+            return HttpResponse(
+                status=HTTPStatus.CREATED
             )
