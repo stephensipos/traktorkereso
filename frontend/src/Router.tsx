@@ -8,6 +8,7 @@ import {
 
 import RegisterView from "./views/auth/Register"
 import LoginView from "./views/auth/Login"
+import TractorListView from "./views/tractors/list/List"
 
 export default () => {
 	return (
@@ -35,7 +36,7 @@ export default () => {
 						<LoginView />
 					</Route>
 					<Route path="/">
-						<div>Traktorok</div>
+						<TractorListView />
 					</Route>
 				</Switch>
 			</div>
