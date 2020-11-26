@@ -28,6 +28,7 @@ Közös projekt a Szoftverfejlesztési módszertanok órára.
 * Backend
   * API dokumentáció
   * API endpointok
+  * Selenium webdriver alapú crawler az adatbázis feltöltésére a [hasznaltauto.hu](https://www.hasznaltauto.hu/kereso/munkagep) hirdetései alapján  
 * Frontend
   * Regisztáció
   * Bejelentkezés
