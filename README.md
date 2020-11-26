@@ -1,6 +1,6 @@
 # Traktorkereső
 
-Projekt a Szoftverfejlesztési módszertanok órára.
+Közös projekt a Szoftverfejlesztési módszertanok órára.
 
 ## Projekttagok
 
@@ -11,12 +11,24 @@ Projekt a Szoftverfejlesztési módszertanok órára.
 
 ## Megvalósítandó funkciók
 
-* Traktoradatbázis
+* Autentikáció
+* Traktor adatbázis
+* Traktorok listázása
 * Kereső az alábbi paraméterek alapján:
   * Gyártó
   * Modell
   * Állapot
   * Ár
   * Üzemóra
-* Összehasonlítás
 * Értékelés
+* Összehasonlítás
+
+## Jelenleg elérhető fukciók
+
+* Backend
+  * API dokumentáció
+  * API endpointok
+* Frontend
+  * Regisztáció
+  * Bejelentkezés
+  * Traktorok listázása
