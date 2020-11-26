@@ -201,8 +201,8 @@ class RatingView(APIView):
             return JsonResponse(
                 {"error_code": 2,},
                 status=HTTPStatus.NOT_FOUND
-            )
-            
+            )                
+
     def post(self, request, tractor_id):
 
         if not request.user.is_authenticated:
@@ -239,3 +239,31 @@ class RatingView(APIView):
             return HttpResponse(
                 status=HTTPStatus.CREATED
             )
+
+class RatingList(View):
+    def get(self, request, tractor_id):
+        try:
+            tractor = Tractor.objects.get(pk=tractor_id)
+
+        except:
+            return JsonResponse(
+                {"error_code": 1},
+                status=HTTPStatus.NOT_FOUND
+            )
+
+        ratings = Rating.objects.filter(tractor = tractor)
+
+        return JsonResponse(
+            {
+                "ratings": [
+                    {
+                        "tractor_id": rating.tractor_id,
+                        "username": rating.user.username,
+                        "stars": rating.stars,
+                        "comment": rating.comment
+                    }
+                    for rating in ratings 
+                ]
+            }
+                     
+        )
