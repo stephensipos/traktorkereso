@@ -110,26 +110,6 @@ export default function Login() {
 		return errors
 	}
 
-	const renderIcon = function () {
-		if (authenticationFailed) {
-			return (
-				<WarningOutlinedIcon />
-			)
-		} else {
-			return (
-				<LockOutlinedIcon />
-			)
-		}
-	}
-
-	const renderTitle = function () {
-		if (authenticationFailed) {
-			return "Authentication failed!"
-		} else {
-			return "Sign up"
-		}
-	}
-
 	const showAlert = function () {
 		if (authenticationFailed) {
 			return (
