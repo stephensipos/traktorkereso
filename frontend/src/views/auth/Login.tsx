@@ -74,6 +74,8 @@ export default function Login() {
 					dispatch(userAuthenticated({
 						token: response.data.bearer,
 					}))
+
+					alert("Success!");
 				}
 			})
 			.catch(error => {
